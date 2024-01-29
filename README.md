@@ -1,9 +1,9 @@
-# Bitcoin wallet address and PSBT implementation
+# Bitcoin wallet address and PSBT utility package
 
 
 ## Description
 
-A basic bitcoin wallet address and PSBT implemntation using bitcoinlib.js
+A basic bitcoin wallet address and PSBT utility built for development and testing purposes (DO NOT USE IN PROD!).
 
 ## Installation
 
