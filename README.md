@@ -3,13 +3,16 @@
 
 ## Description
 
-A basic bitcoin wallet address and PSBT utility built for development and testing purposes (DO NOT USE IN PROD!).
+A basic bitcoin wallet address and PSBT utility built for development and testing purposes only (DO NOT USE IN PROD!).
 
 ## Installation
 
 ```bash
 # Clone the repository
 $ git clone https://github.com/Anyitechs/bitcoin_wallet_address.git
+
+# Change directory
+$ cd bitcoin_wallet_address
 
 # Install dependencies
 $ npm install
@@ -35,6 +38,7 @@ There are currently three functionalities included at the moment
 ### TODO
 - Construct a normal transaction functionality
 - Broadcast transaction functionality
+- Migrate the package to Typescript
 
 
 ## Stay in touch
