@@ -24,7 +24,7 @@ $ npm start
 ```
 
 ## Available Functionalites
-- There are currently three functionalities included at the moment
+There are currently three functionalities included at the moment
 
 - ```generateWalletAddress(walletAddressType)``` this basically generates a ```p2pkh``` wallet address by default if no ```walletAddressType``` was passed in. You can also generate other wallet address type like a ```p2sh```, ```p2tr```, etc.
 
