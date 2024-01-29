@@ -36,9 +36,11 @@ There are currently three functionalities included at the moment
 - ```buildPsbtTx()```, this method constructs a ```PSBT``` and returns the hex of the transaction so you can broadcast to peers.
 
 ### TODO
-- Construct a normal transaction functionality
-- Broadcast transaction functionality
-- Migrate the package to Typescript
+- Construct a normal transaction functionality [medium priority]
+- Broadcast transaction functionality [medium priority]
+- Migrate the package to Typescript [low priority]
+- Add unit tests [high priority]
+- Fix the weird bug on ```buildPsbtTx()``` [high priority]
 
 
 ## Stay in touch
