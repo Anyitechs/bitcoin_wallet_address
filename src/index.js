@@ -110,6 +110,22 @@ async function getTxLocktime(url) {
     return transaction.locktime;
 }
 
+function generateRedeemScript(lockHex) {
+    const redeemScript = bitcoin.script.compile([
+        bitcoin.opcodes.OP_SHA256,
+        lockHex,
+        bitcoin.script.OP_EQUAL
+    ]);
+    console.log('redeem script', redeemScript.toString('hex'));
+    return redeemScript.toString('hex');
+}
+
+async function generateAddressFromScript() {
+    const redeemScript = generateRedeemScript("427472757374204275696c64657273");
+    const p2wsh = bitcoin.payments.p2wsh({ redeem: { output: Buffer.from(redeemScript, 'hex'), network }, network });
+    console.log('address from script');
+    console.log(p2wsh.address);
+}
 
 /**
  * 
@@ -130,17 +146,19 @@ async function buildPsbtTx() {
     const outputAmount = amount*1e8 - minerFee;
     txb.addOutput({ address: destinationAddress, value: outputAmount });
     
-    txb.signInput(0, keypair);
+    txb.signInput(0, keypair);//‎0.00001000 
     const hex = txb.toHex();
     return hex;
 }
 
 // buildPsbtTx();
 
-getTxVersion(txUrl)
-getTxInputs(txUrl)
-getTxOutputs(txUrl)
-getTxLocktime(txUrl)
+// getTxVersion(txUrl)
+// getTxInputs(txUrl)
+// getTxOutputs(txUrl)
+// getTxLocktime(txUrl)
+// generateRedeemScript()
+generateAddressFromScript()
 
 
 module.exports = { getRawtx, getTxVersion, getTxOutputs, getTxInputs,
