@@ -5,17 +5,17 @@ const fs = require('fs');
 const { getRawtx } = require('./index');
 
 const ECPair = ECPairFactory(tinysecp);
-const network = bitcoin.networks.testnet;
+const network = bitcoin.networks.regtest;
 const keypair = ECPair.makeRandom({ network });
 
 
 /**
  * Creates a bitcoin address and optionally save to the directory.
  * @param {String} walletAddressType - This should be a bitcoin address type in string format. For example, p2pkh, p2sh, etc.
- * @param {boolean} saveToFile - This is an optional flag to save the newly created wallet details to the file system. The default is false.
+ * @param {boolean} saveToFile - This is an optional flag to save the newly created wallet details to the file system. The default is true, but you can turn it off.
  * @returns {wallet} This function returns the newly created wallet details. 
  */
-function createWallet(walletAddressType, saveToFile=false) {
+function createWallet(walletAddressType, saveToFile=true) {
     switch (walletAddressType) {
         case 'p2pkh':
             walletAddressType = bitcoin.payments.p2pkh;
@@ -62,7 +62,7 @@ function createWallet(walletAddressType, saveToFile=false) {
         if (saveToFile) {
             // fs.writeFileSync('wallet.json', walletJson);
             // const keypairHex = keypair.toWIF()
-            fs.writeFileSync('keypair.json', keypair.toWIF());
+            fs.writeFileSync('keypair.txt', keypair.toWIF());
             console.log('wallet created and saved successfully');
         }
 
@@ -97,6 +97,6 @@ async function buildPsbtTx() {
     return hex;
 }
 
-buildPsbtTx();
+// buildPsbtTx();
 
-// createWallet("p2wpkh", true);
+createWallet("p2wpkh");
